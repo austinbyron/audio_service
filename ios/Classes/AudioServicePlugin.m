@@ -146,12 +146,12 @@ static MPMediaItemArtwork* artwork = nil;
     fastForwardInterval = [call.arguments objectForKey:@"fastForwardInterval"];
     rewindInterval = [call.arguments objectForKey:@"rewindInterval"];
     if (fastForwardInterval.integerValue > 0) {
-      [commandCenter.skipForwardCommand setEnabled:YES];
+      [commandCenter.skipForwardCommand setEnabled:NO];
       [commandCenter.skipForwardCommand addTarget: self action:@selector(skipForward:)];
       commandCenter.skipForwardCommand.preferredIntervals = @[fastForwardInterval];
     }
     if (rewindInterval.integerValue > 0) {
-      [commandCenter.skipBackwardCommand setEnabled:YES];
+      [commandCenter.skipBackwardCommand setEnabled:NO];
       [commandCenter.skipBackwardCommand addTarget: self action:@selector(skipBackward:)];
       commandCenter.skipBackwardCommand.preferredIntervals = @[rewindInterval];
     }
@@ -160,8 +160,8 @@ static MPMediaItemArtwork* artwork = nil;
 
     // TODO: enable more commands
     // Seeking
-    [commandCenter.seekForwardCommand setEnabled:NO];
-    [commandCenter.seekBackwardCommand setEnabled:NO];
+    [commandCenter.seekForwardCommand setEnabled:YES];
+    [commandCenter.seekBackwardCommand setEnabled:YES];
     // Language options
     if (@available(iOS 9.0, *)) {
       [commandCenter.enableLanguageOptionCommand setEnabled:NO];
